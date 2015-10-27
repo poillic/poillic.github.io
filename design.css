@@ -1,0 +1,102 @@
+body{
+	 margin:0; padding:
+	  0; height: 100%;
+	background: #bdc3c7;
+	}
+.main{
+	color: #e67e22;
+	font-size: 200px;
+}
+section{
+	display: none;
+	background: #34495e;
+	padding: 1.5em;
+	margin: auto;
+	text-align: center;
+	max-width: 512px;
+	height: 100%;
+	min-height: 650px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+#home{
+	display: block;
+}
+button{
+	background: #ecf0f1;
+    color: #c0392b;
+    border-color: transparent;
+    padding: 5px 15px;
+    font-size: 3em;
+    border-radius: 10px;
+    cursor: pointer;
+	transition: all .5s;
+	display: block;
+    margin: 15px auto;
+}
+h2{ margin-top: 0; margin-bottom: .5em;}
+button:hover{
+	color: #ecf0f1;
+	background: #e74c3c;
+}
+#game{
+}
+#alphabet{
+	font-size: 2em;
+}
+#alphabet div{
+	width: 16%;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid #f39c12;
+	margin-left: 10px;
+}
+#alphabet div .fr{
+	color: #e67e22;
+	margin-left: 5px;
+}
+#alphabet div .kanji{
+	color: #d35400;
+}
+#data{
+	font-size: 2.2em;
+    color: #2c3e50;
+    background: #7f8c8d;
+}
+.prop{
+	font-size: 50px;
+	padding: 20px;
+	width: 25%;
+	height: 100px;
+	display: inline-block;
+	background: #bdc3c7;
+	margin: 0 10px;
+	cursor: pointer;
+	line-height: 90px;
+	margin-bottom: 20px;
+}
+.prop:hover{
+	background: #d0d0d0;
+}
+.prop.good{
+	animation: goodans 1s;
+}
+.prop.bad{
+	animation: bad 2s infinite;
+}
+.gameOver{
+	display: none;
+}
+@keyframes goodans{
+	0%{ background : #27ae60;}
+	50%{ background : #2ecc71;}
+	100%{ background : #27ae60;}
+}
+@keyframes bad{
+	0%{ background: #c0392b;}
+	50%{ background: #e74c3c;}
+	100%{ background: #c0392b;}
+}

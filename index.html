@@ -1,1 +1,38 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head></head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="design.css">
+<body>
+	<section id="home">
+		<h1>JapApp</h1>
+		<button class="play">Play !</button>
+		<button class="stats">Stats</button>
+		<button class="alphabet">Alphabet</button>
+	</section>
+	<section id="alphabet">
+		<h2>Katakana</h2>
+	</section>
+	<section id="game">
+		<div id="data">
+			Score : <span class="score"></span>
+			Life : <span class="life"></span>
+		</div>
+		<div id="question">
+			<span class="main"></span>
+			<div class="answers"></div>
+		</div>
+		<div class="gameOver">
+			<h2>Congratulations</h2>
+			You made <span class="score"></span> !
+			<button class="replay">Replay ?</button>
+		</div>
+	</section>
+	<script type="text/javascript" src="scripts/Dictionnary.js"></script>
+	<script type="text/javascript" src="scripts/AddEvent.js"></script>
+	<script type="text/javascript" src="scripts/UI.js"></script>
+	<script type="text/javascript" src="scripts/Question.js"></script>
+	<script type="text/javascript" src="scripts/Game.js"></script>
+	<script type="text/javascript" src="scripts/Main.js"></script>
+</body>
+</html>
