@@ -8,5 +8,15 @@ var Dictionary = [
 	{ fr : 'ke', kanji: 'け', lvl:2},
 	{ fr : 'ki', kanji: 'き', lvl:2},
 	{ fr : 'ko', kanji: 'こ ', lvl:2},
-	{ fr : 'ku', kanji: 'く', lvl:2}
+	{ fr : 'ku', kanji: 'く', lvl:2},
+	{ fr : 'sa', kanji: 'さ', lvl:3},
+	{ fr : 'se', kanji: 'せ', lvl:3},
+	{ fr : 'shi', kanji: 'し', lvl:3},
+	{ fr : 'so', kanji: 'そ', lvl:3},
+	{ fr : 'su', kanji: 'す', lvl:3},
+	{ fr : 'ta', kanji: 'た', lvl:4},
+	{ fr : 'te', kanji: 'て', lvl:4},
+	{ fr : 'chi', kanji: 'ち', lvl:4},
+	{ fr : 'to', kanji: 'と', lvl:4},
+	{ fr : 'tsu', kanji: 'つ', lvl:4}
 ];

@@ -37,6 +37,18 @@ button{
 	display: block;
     margin: 15px auto;
 }
+button.back{
+	float: left;
+	font-size: 0.5em;
+	padding: 5px;
+	margin: 0;
+}
+
+button.back:before{
+	content: "<";
+	display: inline-block;
+	margin-right: 5px;
+}
 h2{ margin-top: 0; margin-bottom: .5em;}
 button:hover{
 	color: #ecf0f1;

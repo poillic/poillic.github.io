@@ -16,9 +16,13 @@ Game.prototype = {
 
 		addEventsCapabilities(this);
 		
+		this.score = 0;
+		this.life = 5;
 		this.ui = new UI();
 
 		this.on('playerChoice', this.playerAnswer);
+		this.on('restartGame', this.init);
+
 		this.newQuestion();
 		this.ui.UpdateScore({
 			score: this.score,
@@ -38,7 +42,6 @@ Game.prototype = {
 		this.ui.displayQuestion(this.currentQuestion);
 	},
 	playerAnswer: function(_id, elt) {
-		console.log(this);
 		if (this.rep.indexOf(_id) != -1) {
 			return;
 		}
