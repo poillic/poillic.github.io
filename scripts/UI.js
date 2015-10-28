@@ -13,17 +13,17 @@ function UI() {
 	this.game.data = document.querySelector('#game #data');
 	this.game.gameOver = document.querySelector('#game .gameOver');
 	this.game.replay = document.querySelector('#game button.replay');
-
+	this.game.newLetter = document.querySelector('#game div#newLetter');
 	this.alphaButton = document.querySelector('#home button.alphabet');
 	this.alphabet.backButton = document.querySelector('#alphabet button.back');
-	
+
 	this.alphabetSection = document.querySelector('section#alphabet');
 	this.homeSection = document.querySelector('section#home');
 	this.gameSection = document.querySelector('section#game');
 
 	var that = this;
 
-	this.game.replay.addEventListener('click', function(e){
+	this.game.replay.addEventListener('click', function(e) {
 		that.hideHome();
 		that.displayGame();
 		game.emit('restartGame');
@@ -32,6 +32,9 @@ function UI() {
 		that.hideAlphabet();
 		that.displayHome();
 		game.emit('restartGame');
+	});
+	this.game.newLetter.addEventListener('click', function(e){
+		that.hide(that.game.newLetter);
 	});
 	this.playButton.addEventListener('click', function(e) {
 		that.hideHome();
@@ -43,11 +46,22 @@ function UI() {
 }
 
 UI.prototype = {
-	hide : function(DOMelt){
+	hide: function(DOMelt) {
 		DOMelt.style.display = "none";
 	},
-	show: function(DOMelt){
-		DOMelt.style.display = "block";
+	show: function(DOMelt, displayType) {
+		DOMelt.style.display = displayType || "block";
+	},
+	showLetters: function(letters) {
+		this.game.newLetter.innerHTML = "";
+		var div = document.createElement('div');
+		for(var i = 0; i < letters.length; i++){
+			var s = document.createElement('span');
+			s.textContent = letters[i].fr + " = " + letters[i].kanji;
+			div.appendChild(s);
+		}
+		this.game.newLetter.appendChild(div);
+		this.show(this.game.newLetter, "flex");
 	},
 	displayAlphabet: function() {
 		document.querySelector('#alphabet').style.display = "block";
@@ -80,7 +94,7 @@ UI.prototype = {
 		}
 	},
 	hideAlphabet: function() {
-		this.hide( this.alphabetSection );
+		this.hide(this.alphabetSection);
 	},
 	displayQuestion: function(_question) {
 
@@ -103,16 +117,16 @@ UI.prototype = {
 		}
 	},
 	displayHome: function() {
-		this.show( this.homeSection );
+		this.show(this.homeSection);
 	},
-	hideHome: function(){
-		this.hide( this.homeSection );
+	hideHome: function() {
+		this.hide(this.homeSection);
 	},
 	displayGame: function() {
-		this.show( this.game.data );
-		this.show( this.game.question );
-		this.show( this.gameSection );
-		this.hide( this.game.gameOver );
+		this.show(this.game.data);
+		this.show(this.game.question);
+		this.show(this.gameSection);
+		this.hide(this.game.gameOver);
 	},
 	UpdateScore: function(data) {
 		this.life.textContent = data.life;
@@ -120,8 +134,8 @@ UI.prototype = {
 	},
 	displayGameOver: function(_score) {
 		document.querySelector('.gameOver .score').textContent = _score;
-		this.show( this.game.gameOver );
-		this.hide( this.game.data );
-		this.hide( this.question );
+		this.show(this.game.gameOver);
+		this.hide(this.game.data);
+		this.hide(this.question);
 	}
 }

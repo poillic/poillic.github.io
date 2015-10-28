@@ -90,6 +90,34 @@ button:hover{
 	line-height: 90px;
 	margin-bottom: 20px;
 }
+div#newLetter{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:  #bdc3c7;
+	opacity: .95;
+    padding: 20px;
+    height: 100%;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    animation: grey 1.5s infinite;
+}
+div#newLetter div{
+	margin: 0 auto;
+}
+div#newLetter span{
+	display: block;
+	font-size: 90px;
+	margin: 5px 0;
+}
 .prop:hover{
 	background: #d0d0d0;
 }
@@ -101,6 +129,11 @@ button:hover{
 }
 .gameOver{
 	display: none;
+}
+@keyframes grey{
+	0%{ background : #7f8c8d;}
+	50%{ background : #95a5a6;}
+	100%{ background : #7f8c8d;}
 }
 @keyframes goodans{
 	0%{ background : #27ae60;}

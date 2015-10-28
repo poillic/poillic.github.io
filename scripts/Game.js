@@ -1,6 +1,7 @@
 function Game() {
 	this.score = 0;
 	this.life = 5;
+	this.lvl = 2;
 	this.questions = [];
 	this.currentQuestion = '';
 	this.ui = {};
@@ -15,7 +16,7 @@ Game.prototype = {
 			console.log("Game Init");
 
 		addEventsCapabilities(this);
-		
+
 		this.score = 0;
 		this.life = 5;
 		this.ui = new UI();
@@ -23,24 +24,29 @@ Game.prototype = {
 		this.on('playerChoice', this.playerAnswer);
 		this.on('restartGame', this.init);
 
-		this.newQuestion();
+
+		this.startGame();
 		this.ui.UpdateScore({
 			score: this.score,
 			life: this.life
 		});
 	},
+	startGame: function() {
+		this.ui.showLetters(utils.getLettersByLvl(this.lvl));
+		this.newQuestion();
+	},
 	newQuestion: function() {
 		if (debug)
 			console.log("= Game New Question");
 
-		this.currentQuestion = new Question(1, 4);
+		this.currentQuestion = new Question(this.lvl, 4);
 
 		if (this.currentQuestion)
 			this.questions.push(this.currentQuestion);
 
 		this.rep = [];
-		
-			this.ui.displayQuestion(this.currentQuestion);
+
+		this.ui.displayQuestion(this.currentQuestion);
 	},
 	playerAnswer: function(_id, elt) {
 		if (this.rep.indexOf(_id) != -1) {
@@ -51,7 +57,7 @@ Game.prototype = {
 			this.score++;
 			var that = this;
 			elt.className += " good";
-			this.timer = setTimeout(function(){
+			this.timer = setTimeout(function() {
 				that.newQuestion();
 			}, 800);
 		} else {
