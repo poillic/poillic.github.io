@@ -5,7 +5,7 @@ function Game() {
 	this.currentQuestion = '';
 	this.ui = {};
 	this.rep = [];
-
+	this.timer;
 	this.init();
 }
 
@@ -39,7 +39,8 @@ Game.prototype = {
 			this.questions.push(this.currentQuestion);
 
 		this.rep = [];
-		this.ui.displayQuestion(this.currentQuestion);
+		
+			this.ui.displayQuestion(this.currentQuestion);
 	},
 	playerAnswer: function(_id, elt) {
 		if (this.rep.indexOf(_id) != -1) {
@@ -48,8 +49,11 @@ Game.prototype = {
 		this.rep.push(_id);
 		if (this.currentQuestion.verify(_id)) {
 			this.score++;
+			var that = this;
 			elt.className += " good";
-			this.newQuestion();
+			this.timer = setTimeout(function(){
+				that.newQuestion();
+			}, 800);
 		} else {
 			elt.className += " bad";
 			this.life--;
