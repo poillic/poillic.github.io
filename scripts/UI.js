@@ -1,7 +1,7 @@
 function UI() {
 	this.alphabet = {};
 	this.game = {};
-	this.q = document.querySelector('#question');
+	this.question = document.querySelector('#question');
 	this.main = document.querySelector('#question .main');
 	this.answers = document.querySelector('#question .answers');
 	this.life = document.querySelector('#data .life');
@@ -43,6 +43,12 @@ function UI() {
 }
 
 UI.prototype = {
+	hide : function(DOMelt){
+		DOMelt.style.display = "none";
+	},
+	show: function(DOMelt){
+		DOMelt.style.display = "block";
+	},
 	displayAlphabet: function() {
 		document.querySelector('#alphabet').style.display = "block";
 		document.querySelector('#home').style.display = "none";
@@ -74,7 +80,7 @@ UI.prototype = {
 		}
 	},
 	hideAlphabet: function() {
-		this.alphabetSection.style.display = "none";
+		this.hide( this.alphabetSection );
 	},
 	displayQuestion: function(_question) {
 
@@ -97,16 +103,16 @@ UI.prototype = {
 		}
 	},
 	displayHome: function() {
-		this.homeSection.style.display = "block";
+		this.show( this.homeSection );
 	},
 	hideHome: function(){
-		this.homeSection.style.display = "none";
+		this.hide( this.homeSection );
 	},
 	displayGame: function() {
-		this.game.data.style.display = "block";
-		this.game.question.style.display = "block";
-		this.game.gameOver.style.display = "none";
-		this.gameSection.style.display = "block";
+		this.show( this.game.data );
+		this.show( this.game.question );
+		this.show( this.gameSection );
+		this.hide( this.game.gameOver );
 	},
 	UpdateScore: function(data) {
 		this.life.textContent = data.life;
@@ -114,8 +120,8 @@ UI.prototype = {
 	},
 	displayGameOver: function(_score) {
 		document.querySelector('.gameOver .score').textContent = _score;
-		this.game.data.style.display = "none";
-		document.querySelector('#question').style.display = "none";
-		this.game.gameOver.style.display = "block";
+		this.show( this.game.gameOver );
+		this.hide( this.game.data );
+		this.hide( this.question );
 	}
 }
