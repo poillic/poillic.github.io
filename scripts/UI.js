@@ -17,6 +17,7 @@ function UI() {
 	this.alphaButton = document.querySelector('#home button.alphabet');
 	this.alphabet.backButton = document.querySelector('#alphabet button.back');
 
+	this.alphabet.shown = false;
 	this.alphabetSection = document.querySelector('section#alphabet');
 	this.homeSection = document.querySelector('section#home');
 	this.gameSection = document.querySelector('section#game');
@@ -31,7 +32,6 @@ function UI() {
 	this.alphabet.backButton.addEventListener('click', function(e) {
 		that.hideAlphabet();
 		that.displayHome();
-		game.emit('restartGame');
 	});
 	this.game.newLetter.addEventListener('click', function(e){
 		that.hide(that.game.newLetter);
@@ -66,6 +66,7 @@ UI.prototype = {
 	displayAlphabet: function() {
 		document.querySelector('#alphabet').style.display = "block";
 		document.querySelector('#home').style.display = "none";
+
 		if (this.alphabet.shown)
 			return;
 
