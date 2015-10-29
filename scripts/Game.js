@@ -1,8 +1,10 @@
 function Game() {
 	this.score = 0;
 	this.life = 5;
-	this.lvl = 2;
+	this.lvl = 1;
+	this.rowAnswer = 0;
 	this.questions = [];
+	this.nbProp = 2;
 	this.currentQuestion = '';
 	this.ui = {};
 	this.rep = [];
@@ -24,7 +26,6 @@ Game.prototype = {
 		this.on('playerChoice', this.playerAnswer);
 		this.on('restartGame', this.init);
 
-
 		this.startGame();
 		this.ui.UpdateScore({
 			score: this.score,
@@ -39,7 +40,7 @@ Game.prototype = {
 		if (debug)
 			console.log("= Game New Question");
 
-		this.currentQuestion = new Question(this.lvl, 4);
+		this.currentQuestion = new Question(this.lvl, this.nbProp);
 
 		if (this.currentQuestion)
 			this.questions.push(this.currentQuestion);
@@ -55,12 +56,26 @@ Game.prototype = {
 		this.rep.push(_id);
 		if (this.currentQuestion.verify(_id)) {
 			this.score++;
+			this.rowAnswer++;
 			var that = this;
 			elt.className += " good";
+
+			if( this.rowAnswer >= 5){
+				if( this.nbProp < 4){
+					this.nbProp++;
+				}else{
+					this.lvl++;
+					this.nbProp = 2;
+				}
+				this.rowAnswer = 0;
+			}
+
+
 			this.timer = setTimeout(function() {
 				that.newQuestion();
 			}, 800);
 		} else {
+			this.rowAnswer = 0;
 			elt.className += " bad";
 			this.life--;
 			if (this.life <= 0)

@@ -55,6 +55,7 @@ button:hover{
 	background: #e74c3c;
 }
 #game{
+	position: relative;
 }
 #alphabet{
 	font-size: 2em;
