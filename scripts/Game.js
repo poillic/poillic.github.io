@@ -60,13 +60,9 @@ Game.prototype = {
 			var that = this;
 			elt.className += " good";
 
-			if( this.rowAnswer >= 5){
-				if( this.nbProp < 4){
-					this.nbProp++;
-				}else{
-					this.lvl++;
-					this.nbProp = 2;
-				}
+			if (this.rowAnswer >= 3 + this.lvl) {
+				this.lvl++;
+				this.showNewLetter();
 				this.rowAnswer = 0;
 			}
 
@@ -86,5 +82,8 @@ Game.prototype = {
 			score: this.score,
 			life: this.life
 		});
+	},
+	showNewLetter: function() {
+		this.ui.showLetters(utils.getLettersByLvl(this.lvl));
 	}
 };

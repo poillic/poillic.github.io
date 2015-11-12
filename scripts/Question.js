@@ -10,10 +10,8 @@ Question.prototype = {
 	generate : function(){
 		var that = this;
 		var allWords = Dictionary.filter( function(e){
-			if(e.lvl == that.lvl)
+			if(e.lvl <= that.lvl)
 				return e;
-			else
-				return;
 		});
 
 		for(var i = 0; i < this.nbProp; i++){

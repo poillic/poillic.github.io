@@ -57,9 +57,15 @@ UI.prototype = {
 		var div = document.createElement('div');
 		for(var i = 0; i < letters.length; i++){
 			var s = document.createElement('span');
-			s.textContent = letters[i].fr + " = " + letters[i].kanji;
+			s.textContent = letters[i].kanji + " = " + letters[i].fr;
 			div.appendChild(s);
 		}
+
+		var touchToContinue = document.createElement('span');
+		touchToContinue.textContent = 'Touch to continue';
+		touchToContinue.className = "blink";
+		div.appendChild(touchToContinue);
+
 		this.game.newLetter.appendChild(div);
 		this.show(this.game.newLetter, "flex");
 	},
@@ -77,7 +83,7 @@ UI.prototype = {
 			div.textContent = "Lvl " + i;
 
 			for (e in Dictionary) {
-				if (Dictionary[e].lvl != i) {
+				if (Dictionary[e].rank != i) {
 					continue;
 				}
 

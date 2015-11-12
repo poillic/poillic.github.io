@@ -119,6 +119,11 @@ div#newLetter span{
 	font-size: 90px;
 	margin: 5px 0;
 }
+
+div#newLetter span.blink{
+	font-size: 40px;
+	animation: blink 1.5s infinite;
+}
 .prop:hover{
 	background: #d0d0d0;
 }
@@ -130,6 +135,11 @@ div#newLetter span{
 }
 .gameOver{
 	display: none;
+}
+@keyframes blink{
+	0%{ opacity: 1}
+	50%{ opacity: 0.2}
+	100%{ opacity: 1}
 }
 @keyframes grey{
 	0%{ background : #7f8c8d;}
